@@ -20,8 +20,8 @@ class BookspiderSpider(scrapy.Spider):
         
         # Check to see if current page's next_page is not None
         if next_page:
-            if 'catalogue/' in next_page:   # for page 1 to 2 only
+            if 'catalogue/' in next_page:   
                 next_page_url = 'http://books.toscrape.com/' + next_page
-            else:
+            else:   # for page 1 to 2 only
                 next_page_url = 'http://books.toscrape.com/catalogue/' + next_page
             yield response.follow(next_page_url, callback=self.parse)
